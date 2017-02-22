@@ -26,8 +26,7 @@ FROM Customers Cust JOIN
 	 FROM Customers Cust2
 		JOIN Orders	ON Cust2.CustomerID = Orders.CustomerID
 		JOIN OrderItems ON Orders.OrderID = OrderItems.OrderID
-	 GROUP BY EmailAddress, Orders.OrderID) 
-AS CustProd
+	 GROUP BY EmailAddress, Orders.OrderID) AS CustProd 
 ON Cust.EmailAddress = CustProd.EmailAddress
 GROUP BY Cust.EmailAddress;
 
@@ -38,10 +37,10 @@ WHERE Prod.DiscountPercent NOT IN
     (SELECT Prod2.DiscountPercent
      FROM Products AS Prod2
      WHERE Prod.ProductName <> Prod2.ProductName)
-ORDER BY ProductName
+ORDER BY ProductName;
 
 /*Chapter 6 Problem 6*/
 SELECT EmailAddress, OrderID, OrderDate
-FROM Customers Cust, Orders Ord
+FROM Customers Cust JOIN Orders Ord ON Cust.CustomerID = Ord.CustomerID
 WHERE OrderDate = (SELECT MIN(OrderDate) FROM Orders Ord2	--Min is earliest
 	WHERE Cust.CustomerID = Ord2.CustomerID);

@@ -30,3 +30,7 @@ UPDATE Customers SET Password='secret' WHERE EmailAddress='rick@raven.com';
 /*Chapter 7 Problem 9*/
 UPDATE Customers SET Password='reset';
 
+/*Chapter 7 Problem 10
+Steps were taken to reload the database from the existing file
+No new code creation required*/
+
